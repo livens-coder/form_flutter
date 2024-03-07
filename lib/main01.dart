@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Formulaire',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyForm(),
+    return const MaterialApp(
+      home: Formul(),
     );
   }
 }
 
-class MyForm extends StatefulWidget {
+class Formul extends StatefulWidget {
+  const Formul({Key? key}) : super(key: key);
+
   @override
-  _MyFormState createState() => _MyFormState();
+  State<Formul> createState() => _FormulState();
 }
 
-class _MyFormState extends State<MyForm> {
+class _FormulState extends State<Formul> {
   final _formKey = GlobalKey<FormState>();
-  bool _isChecked = false;
+  bool _isChecked = false; 
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +49,13 @@ class _MyFormState extends State<MyForm> {
                 },
               ),
               TextFormField(
+                  
                 decoration: const InputDecoration(
                   labelText: 'password',
                 ),
-                obscureText: true,
+              obscureText: true,
                 validator: (value) {
+                 
                   if (value == null || value.isEmpty) {
                     return 'password required';
                   } else if (value.length < 8 || value.length > 15) {
